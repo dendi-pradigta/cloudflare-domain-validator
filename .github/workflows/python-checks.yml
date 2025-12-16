@@ -35,15 +35,15 @@ jobs:
       run: |
         python cloudflare_domain_validator.py --help
         
-        echo "Testing with 3 sample domains..."
+        echo "Testing with 3 sample domains (1 Cloudflare, 2 non-Cloudflare)..."
         python cloudflare_domain_validator.py \
           --connect-timeout 1 \
           --read-timeout 1 \
           --no-retry \
-          google.com cloudflare.com example.com
+          google.com cloudflare.com iana.org
         
         echo "Testing with domains.txt file..."
-        echo -e "google.com\ncloudflare.com\nexample.com" > test_domains.txt
+        echo -e "google.com\ncloudflare.com\niana.org" > test_domains.txt
         python cloudflare_domain_validator.py \
           --connect-timeout 1 \
           --read-timeout 1 \
