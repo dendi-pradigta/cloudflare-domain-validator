@@ -28,7 +28,7 @@ A Python tool to check domain accessibility (DNS, HTTP/HTTPS, TLS) with multi-me
 ```bash
 # Clone repository
 git clone <repository-url>
-cd public-accessible-check
+cd cloudflare-domain-validator
 
 # Install dependencies
 pip install -r requirements.txt
