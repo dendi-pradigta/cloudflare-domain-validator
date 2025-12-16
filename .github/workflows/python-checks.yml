@@ -32,4 +32,20 @@ jobs:
       run: python -m py_compile cloudflare_domain_validator.py
     
     - name: Test script execution
-      run: python cloudflare_domain_validator.py --help
+      run: |
+        python cloudflare_domain_validator.py --help
+        
+        echo "Testing with 3 sample domains..."
+        python cloudflare_domain_validator.py \
+          --connect-timeout 1 \
+          --read-timeout 1 \
+          --no-retry \
+          google.com cloudflare.com example.com
+        
+        echo "Testing with domains.txt file..."
+        echo -e "google.com\ncloudflare.com\nexample.com" > test_domains.txt
+        python cloudflare_domain_validator.py \
+          --connect-timeout 1 \
+          --read-timeout 1 \
+          --no-retry \
+          -f test_domains.txt
