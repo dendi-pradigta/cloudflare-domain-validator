@@ -1,12 +1,3 @@
-atlantis-aws-kph.kredivo.com
-atlantis-aws-kth.kredivo.com
-atlantis-aws-kvn.kredivo.com
-atlantis-gcp-fdi.kredivo.com
-atlantis-gcp-ffi.kredivo.com
-atlantis-gcp-fpl.kredivo.com
-atlantis-gcp-fti.kredivo.com
-atlantis-gcp-kph.kredivo.com
-atlantis-gcp-kth.kredivo.com
-atlantis-gcp-kvn.kredivo.com
-atlantis-gcp-xpr.kredivo.com
-atlantis-aws-fdi.kredifazz.id
+example.com
+www.cloudflare.com
+subdomain.example.com
