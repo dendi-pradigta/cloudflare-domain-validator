@@ -1,0 +1,51 @@
+name: Python Code Checks
+
+on:
+  push:
+    branches: [feature/**, release/*]
+  pull_request:
+    branches: [master]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.8', '3.9', '3.10', '3.11']
+      fail-fast: false
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Install dependencies
+      run: pip install dnspython black
+    
+    - name: Check formatting with Black
+      run: black --check .
+    
+    - name: Validate Python syntax
+      run: python -m py_compile cloudflare_domain_validator.py
+    
+    - name: Test script execution
+      run: |
+        python cloudflare_domain_validator.py --help
+        
+        echo "Testing with 3 sample domains (1 Cloudflare, 2 non-Cloudflare)..."
+        python cloudflare_domain_validator.py \
+          --connect-timeout 1 \
+          --read-timeout 1 \
+          --no-retry \
+          google.com cloudflare.com iana.org
+        
+        echo "Testing with domains.txt file..."
+        echo -e "google.com\ncloudflare.com\niana.org" > test_domains.txt
+        python cloudflare_domain_validator.py \
+          --connect-timeout 1 \
+          --read-timeout 1 \
+          --no-retry \
+          -f test_domains.txt

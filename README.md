@@ -1,5 +1,7 @@
 # Domain Accessibility Checker with Enhanced Cloudflare Detection
 
+![Python Code Checks](https://github.com/dendi-pradigta/cloudflare-domain-validator/actions/workflows/python-checks.yml/badge.svg)
+
 A Python tool to check domain accessibility (DNS, HTTP/HTTPS, TLS) with multi-method Cloudflare detection for security audits.
 
 ## Features
